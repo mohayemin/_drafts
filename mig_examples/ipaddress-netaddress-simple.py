@@ -1,3 +1,4 @@
+
 from netaddr import IPAddress, IPNetwork
 
 def load_config(config):
