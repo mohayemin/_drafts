@@ -1,12 +1,15 @@
-from Cheetah import Template
+import jinja2
 
 
 def load_config():
   values = {
     'VALUE': 5,
-    'ROOT': '${ROOT}',
+    'ROOT': '{{ ROOT }}'
   }
-  tmpl_file = open("template/config.txt").read()
-  tmpl = Template.Template(tmpl_file, searchList=[values])
-  pxe_config = str(tmpl)
-  return pxe_config
+  tmpl_path, tmpl_file = os.path.split("template/config.txt")
+  loader = loader=jinja2.FileSystemLoader(tmpl_path)
+  env = jinja2.Environment(loader=loader)
+  template = env.get_template(tmpl_file)
+
+  return template.render(values)
+
