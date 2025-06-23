@@ -1,11 +1,10 @@
+from passlib.hash import bcrypt
 
-import bcrypt
 
-def password_valid(actual_pw, check):
-    pwd_hash = actual_pw.decode('utf8').encode('utf8')
-    return bcrypt.hashpw(check, pwd_hash) == pwd_hash
 
-def set_password(new_pw):
-    new_pw = new_pw.encode('utf8')
-    hashed_pw = bcrypt.hashpw(new_pw, bcrypt.gensalt())
-    return hashed_pw
+    def password_valid(self, given_password):
+        return bcrypt.verify(given_password, self.password)
+
+
+    def set_password(self, new_password):
+        self.password = bcrypt.encrypt(new_password)
