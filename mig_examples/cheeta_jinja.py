@@ -1,6 +1,5 @@
 from jinja2 import Environment, FileSystemLoader
 
-
 def load_config():
   TMPL_PATH = "template/config.txt"
   values = {
