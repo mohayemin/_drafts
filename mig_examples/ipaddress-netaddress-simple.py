@@ -1,6 +1,5 @@
-
-from ipaddress import ip_address, ip_network
+from netaddr import IPAddress, IPNetwork
 
 def load_config(config):
-  address = ip_address(config["address"])
-  network = ip_network(config["network"])
+  address = IPAddress(config["address"])
+  network = IPNetwork(config["network"])
