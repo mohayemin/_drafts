@@ -10,5 +10,6 @@ def load_config():
   loader = loader=FileSystemLoader(path)
   env = Environment(loader=loader)
   template = env.get_template(file)
-
-  return template.render(values)
+  
+  pxe_config = template.render(values)
+  return pxe_config
