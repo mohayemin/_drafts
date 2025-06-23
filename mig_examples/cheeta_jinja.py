@@ -1,4 +1,5 @@
-import jinja2
+from jinja2 import Environment, FileSystemLoader
+
 
 
 def load_config():
@@ -6,10 +7,10 @@ def load_config():
     'VALUE': 5,
     'ROOT': '{{ ROOT }}'
   }
-  tmpl_path, tmpl_file = os.path.split("template/config.txt")
-  loader = loader=jinja2.FileSystemLoader(tmpl_path)
-  env = jinja2.Environment(loader=loader)
-  template = env.get_template(tmpl_file)
+  path, file = os.path.split("template/config.txt")
+  loader = loader=FileSystemLoader(path)
+  env = Environment(loader=loader)
+  template = env.get_template(file)
 
   return template.render(values)
 
