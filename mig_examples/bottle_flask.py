@@ -1,7 +1,9 @@
-from flask import Flask
+from bottle import Bottle
 
 class CQHttp():
   def __init__(self):
-    self._handlers = defaultdict(dict)
-    self._app = Flask(__name__)
-    self._app.route('/', methods=['POST'])(self._handle)
+    handlers = defaultdict(dict)
+    app = Bottle()
+    app.post('/')(self._handle)
+    self._handlers = handlers
+    self._app = app
