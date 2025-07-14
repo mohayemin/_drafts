@@ -7,7 +7,7 @@ def load_config():
     'ROOT': '{{ ROOT }}'
   }
   path, file = os.path.split(TMPL_PATH)
-  loader = loader=FileSystemLoader(path)
+  loader = FileSystemLoader(path)
   env = Environment(loader=loader)
   template = env.get_template(file)
   
