@@ -1,9 +1,11 @@
 import log
-from bottle import Bottle
-app = Bottle()
+from flask import Flask
+app = Flask(__name__)
 
-log.debug('init app')
+log.info('init app')
 
-@app.route('/login', method='POST')
+@app.route('/login', 
+           methods=['POST'])
 def do_login():
-  check_login()
+  check_login() 
+  
