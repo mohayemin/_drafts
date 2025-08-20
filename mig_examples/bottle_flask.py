@@ -1,9 +1,9 @@
-from flask import Flask
+import log
+from bottle import Bottle
+app = Bottle()
 
-class CQHttp():
-  def __init__(self):
-    handlers = defaultdict(dict)
-    app = Flask(__name__)
-    app.route('/', methods=['POST'])(self._handle)
-    self._handlers = handlers
-    self._app = app
+log.debug('init app')
+
+@app.route('/login', method='POST')
+def do_login():
+  check_login()
