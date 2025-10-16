@@ -1,12 +1,10 @@
-import aiohttp
+import requests
 
-async def fetch_data(url, params):
+def fetch_data(url, params):
     api_url = API_ROOT + url
-    async with aiohttp.ClientSession() as ses:
-        async with ses.get(api_url, params=params) as r:
-            if r.status != 200: 
-                raise Exception("error fetching")
-            
-            return await r.json()
-        
+    r = requests.get(api_url, params=params)
     
+    if r.status_code != 200:
+        raise Exception("error fetching")
+    
+    return r.json()
